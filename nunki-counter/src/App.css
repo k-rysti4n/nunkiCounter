@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none; /* Blokuje wywoływanie menu po przytrzymaniu palca */
+}
+
+body, html, #root {
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Roboto, sans-serif;
+  background-color: #000;
+}
+
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* Uwzględnienie bezpiecznych odstępów ekranów z notchem i Dynamic Island */
+  padding-bottom: calc(30px + env(safe-area-inset-bottom, 20px));
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Zdjęcie jako pełny ekran */
+.bg-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Gradient przyciemniający dół i górę strony */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg, 
+    rgba(0,0,0,0.4) 0%, 
+    rgba(0,0,0,0) 35%, 
+    rgba(0,0,0,0.85) 100%
+  );
+  z-index: 2;
+}
+
+/* Przycisk w prawym górnym rogu z uwzględnieniem paska iOS */
+.change-photo-btn {
+  position: absolute;
+  top: calc(16px + env(safe-area-inset-top, 16px));
+  right: 20px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.change-photo-btn:active {
+  transform: scale(0.92);
+}
+
+/* Karta z czasem */
+.glass-card {
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  max-width: 380px;
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  padding: 24px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.card-header h1 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.heart-icon {
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+.time-row {
+  display: grid;
+  gap: 12px;
+}
+
+.time-row.primary {
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 16px;
+}
+
+.time-row.secondary {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.time-row.primary .num {
+  font-size: 2.2rem;
+}
+
+.lbl {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
