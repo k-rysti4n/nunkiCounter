@@ -7,13 +7,15 @@ import './App.css';
 
 dayjs.extend(duration);
 
-// --- 1. KONFIGURACJA LICZNIKA ---
 const START_DATE = '2024-11-10T00:00:00'; 
 const PHOTOS = [
-  '/photos/1.jpg'
+  '/photos/1.jpg',
+  '/photos/2.jpg',
+  '/photos/3.jpg',
+  '/photos/4.jpg',
+  '/photos/5.jpg',
 ];
 
-// --- 2. KONFIGURACJA OSI CZASU (Dodawaj ile chcesz!) ---
 const TIMELINE_EVENTS = [
   {
     id: 1,
@@ -250,7 +252,8 @@ export default function App() {
           >
             <div className="card-header">
               <Heart className="heart-icon" fill="#ff4b4b" color="#ff4b4b" />
-              <h1>Jesteśmy razem już</h1>
+              <h1>Niuńki są już razem</h1>
+              <Heart className="heart-icon" fill="#ff4b4b" color="#ff4b4b" />
             </div>
 
             <div className="time-row primary">
